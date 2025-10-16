@@ -46,6 +46,6 @@ class RelatorioComRodapeTotal(DecoradorRelatorio):
     """
     def gerar(self, ida_mercado):
         conteudo_original = super().gerar(ida_mercado)
-        total = ida_mercado.get_custo() # Usando o método do padrão Composite!
+        total = ida_mercado.get_custo()
         rodape = f"\n--- VALOR TOTAL: R$ {total:.2f} ---"
         return conteudo_original + rodape

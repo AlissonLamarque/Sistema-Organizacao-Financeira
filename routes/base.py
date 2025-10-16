@@ -14,14 +14,40 @@ def index():
 @main_bp.route('/add-trip', methods=['GET', 'POST'])
 def add_trip():
     form = IdaMercadoForm()
-    if form.validate_on_submit():
-        
-        # Utilizando padrão facade
+    if request.method == 'POST':
+        nome_mercado = request.form.get('nome_mercado')
+        data = form.data.data
+
+        # Captura listas com todos os itens do formulário
+        produtos_ids = request.form.getlist('produto')
+        quantidades = request.form.getlist('quantidade')
+        precos_unitarios = request.form.getlist('preco_unitario')
+
+        # Monta lista de dicionários com os dados
+        itens_data = []
+        for i in range(len(produtos_ids)):
+            if not produtos_ids[i] or not quantidades[i] or not precos_unitarios[i]:
+                continue  # ignora campos vazios
+
+            try:
+                produto_id = int(produtos_ids[i])
+                quantidade = float(quantidades[i])
+                preco_unitario = float(precos_unitarios[i])
+            except ValueError:
+                continue  # ignora se algum dado for inválido
+
+            itens_data.append({
+                "produto_id": produto_id,
+                "quantidade": quantidade,
+                "preco_unitario": preco_unitario
+            })
+
+        # Usa o padrão Facade para registrar a compra
         facade = MercadoFacade()
         nova_compra, mensagem = facade.registrar_compra(
-            nome_mercado=form.nome_mercado.data,
-            data=form.data.data,
-            itens_data=form.itens.data
+            nome_mercado=nome_mercado,
+            data=data,
+            itens_data=itens_data
         )
 
         if nova_compra:
@@ -30,7 +56,8 @@ def add_trip():
         else:
             flash(mensagem, 'danger')
 
-    return render_template('add_grocery_trip.html', form=form)
+    produtos = Produto.query.all()
+    return render_template('add_grocery_trip.html', form=form, produtos=produtos)
 
 @main_bp.route('/trip/<int:trip_id>')
 def trip_detail(trip_id):
@@ -61,3 +88,16 @@ def add_product():
     
     produtos = Produto.query.all()
     return render_template('add_product.html', produtos=produtos)
+
+@main_bp.route('/add-product-modal', methods=['POST'])
+def add_product_modal():
+    nome_produto = request.form.get('nome_produto')
+    if nome_produto:
+        if not Produto.query.filter_by(nome=nome_produto).first():
+            novo_produto = Produto(nome=nome_produto)
+            db.session.add(novo_produto)
+            db.session.commit()
+            flash('Produto adicionado com sucesso!', 'success')
+        else:
+            flash('Este produto já existe.', 'warning')
+    return redirect(url_for('main.add_compra'))  # volta para a tela de nova compra

@@ -26,15 +26,85 @@
             </div>
 
             <div class="mb-3">
-                {{ form.itens.label(class="form-label fw-semibold") }}
-                {{ form.itens(class="form-control", rows="4", placeholder="Ex: Arroz - 2kg - R$ 10,00; Leite - 1L - R$ 4,50") }}
-                <div class="form-text">Digite cada item separando por ponto e vírgula.</div>
+                <label class="form-label fw-semibold">Itens da compra</label>
+                <div id="itens-container">
+                    <div class="row g-2 align-items-end mb-2 item-row">
+                        <div class="col-md-5">
+                            <label class="form-label">Produto</label>
+                            <select name="produto" class="form-select" required>
+                                <option value="">Selecione um produto...</option>
+                                {% for produto in produtos %}
+                                    <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Quantidade</label>
+                            <input type="number" step="0.01" min="0" name="quantidade" class="form-control" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Preço Unitário (R$)</label>
+                            <input type="number" step="0.01" min="0" name="preco_unitario" class="form-control" required>
+                        </div>
+                        <div class="col-md-1 text-end">
+                            <button type="button" class="btn btn-outline-danger remove-item" title="Remover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-2">
+                    <button type="button" id="add-item" class="btn btn-outline-primary">
+                        <i class="bi bi-plus-circle"></i> Adicionar produto
+                    </button>
+                </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary w-100 mt-3">
                 <i class="bi bi-check-circle"></i> Registrar Compra
             </button>
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('itens-container');
+    const addBtn = document.getElementById('add-item');
+
+    addBtn.addEventListener('click', () => {
+        const newRow = document.createElement('div');
+        newRow.classList.add('row', 'g-2', 'align-items-end', 'mb-2', 'item-row');
+        newRow.innerHTML = `
+            <div class="col-md-5">
+                <select name="produto" class="form-select" required>
+                    <option value="">Selecione um produto...</option>
+                    {% for produto in produtos %}
+                        <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="number" step="0.01" min="0" name="quantidade" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" step="0.01" min="0" name="preco_unitario" class="form-control" required>
+            </div>
+            <div class="col-md-1 text-end">
+                <button type="button" class="btn btn-outline-danger remove-item" title="Remover">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        `;
+        container.appendChild(newRow);
+    });
+
+    container.addEventListener('click', (e) => {
+        if (e.target.closest('.remove-item')) {
+            e.target.closest('.item-row').remove();
+        }
+    });
+});
+</script>
 {% endblock %}
