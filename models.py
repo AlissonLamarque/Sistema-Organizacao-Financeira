@@ -2,15 +2,12 @@ from flask_sqlalchemy import SQLAlchemy
 import abc
 from datetime import datetime
 
-# A instância do SQLAlchemy é inicializada aqui e configurada no system.py
 db = SQLAlchemy()
 
 # --- Implementação do Padrão Composite ---
-# A classe ComponenteCusto serve como uma definição de interface, mas não precisa
-# ser herdada diretamente pelos modelos do SQLAlchemy para evitar o conflito de metaclasse.
 class ComponenteCusto(abc.ABC):
     """
-    A interface 'Component' declara um método comum para folhas e compostos.
+    A interface 'Component' declara um método comum para folhas e compostos
     """
     @abc.abstractmethod
     def get_custo(self):
@@ -18,7 +15,7 @@ class ComponenteCusto(abc.ABC):
 
 class Produto(db.Model):
     """
-    Representa um produto cadastrado no sistema.
+    Representa um produto cadastrado no sistema
     """
     __tablename__ = 'produtos'
     id = db.Column(db.Integer, primary_key=True)
@@ -29,8 +26,7 @@ class Produto(db.Model):
 
 class IdaMercado(db.Model):
     """
-    Representa uma ida ao mercado. Esta é a nossa classe 'Composite',
-    pois agrupa vários 'ItemComprado'.
+    Representa uma ida ao mercado
     """
     __tablename__ = 'idas_mercado'
     id = db.Column(db.Integer, primary_key=True)
@@ -41,16 +37,11 @@ class IdaMercado(db.Model):
     itens = db.relationship('ItemComprado', back_populates='ida_mercado', cascade="all, delete-orphan")
 
     def get_custo(self):
-        """
-        O custo de um 'Composite' é a soma do custo de todos os seus filhos.
-        Este método garante que a classe se comporte como um ComponenteCusto (Duck Typing).
-        """
         return sum(item.get_custo() for item in self.itens)
 
 class ItemComprado(db.Model):
     """
-    Representa um item específico comprado em uma IdaMercado.
-    Esta é a nossa classe 'Leaf' (folha).
+    Representa um item específico comprado em uma IdaMercado
     """
     __tablename__ = 'itens_comprados'
     id = db.Column(db.Integer, primary_key=True)
@@ -64,9 +55,5 @@ class ItemComprado(db.Model):
     produto = db.relationship('Produto')
 
     def get_custo(self):
-        """
-        O custo de uma 'Folha' é seu próprio valor calculado.
-        Este método garante que a classe se comporte como um ComponenteCusto (Duck Typing).
-        """
         return self.quantidade * self.preco_unitario_pago
 

@@ -15,7 +15,8 @@ def index():
 def add_trip():
     form = IdaMercadoForm()
     if form.validate_on_submit():
-        # A complexidade está escondida dentro da Facade
+        
+        # Utilizando padrão facade
         facade = MercadoFacade()
         nova_compra, mensagem = facade.registrar_compra(
             nome_mercado=form.nome_mercado.data,
@@ -35,7 +36,7 @@ def add_trip():
 def trip_detail(trip_id):
     compra = IdaMercado.query.get_or_404(trip_id)
 
-    # Aqui usamos o Padrão Decorator para montar o relatório
+    # Base para desenvolvimento do padrão Decorator
     relatorio_base = RelatorioSimples()
     relatorio_com_cabecalho = RelatorioComCabecalho(relatorio_base)
     relatorio_final = RelatorioComRodapeTotal(relatorio_com_cabecalho)
@@ -44,7 +45,6 @@ def trip_detail(trip_id):
 
     return render_template('trip_detail.html', relatorio=texto_relatorio, compra=compra)
 
-# Rota simples para adicionar produtos e testar o sistema
 @main_bp.route('/add-product', methods=['GET', 'POST'])
 def add_product():
     if request.method == 'POST':
