@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Base Geral ---------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Links e botões */
+a {
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background: linear-gradient(90deg, #007bff 0%, #0056d6 100%);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.navbar .nav-link {
+    color: #f8f9fa !important;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #ffdd57 !important;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    border: none;
+    border-radius: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Tabelas ---------- */
+.table thead {
+    background-color: #e9f2ff;
+}
+
+.table-hover tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f6ff;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056d6;
+}
+
+.btn-outline-secondary {
+    color: #333;
+    border-color: #ccc;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f1f1f1;
+}
+
+/* ---------- Formulários ---------- */
+.form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #d9dfe8;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #007bff;
+}
+
+/* ---------- Alertas ---------- */
+.alert {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Footer ---------- */
+.custom-footer {
+    background: linear-gradient(90deg, #343a40 0%, #1d2124 100%);
+    color: #f8f9fa;
+    letter-spacing: 0.3px;
+}
+
+.custom-footer small {
+    opacity: 0.85;
+}
+
+/* ---------- Títulos e Cabeçalhos ---------- */
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    color: #1e3a5f;
+}
+
+/* ---------- Animações Suaves ---------- */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Seções e Layout ---------- */
+main {
+    animation: fadeIn 0.4s ease-in;
+}
+
+pre {
+    font-family: 'Courier New', monospace;
+    background-color: #f8fafc;
+    border-left: 4px solid #007bff;
+}
+
+/* ---------- Itens Específicos ---------- */
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}

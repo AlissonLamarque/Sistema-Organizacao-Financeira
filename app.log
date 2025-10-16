@@ -1,0 +1,76 @@
+2025-09-18 16:13:30,671 - sistema_web_logger - INFO - Acessando a página inicial.
+2025-09-18 16:13:39,787 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 16:13:51,501 - sistema_web_logger - INFO - Cliente 'Teste' (ID: 11) cadastrado com sucesso.
+2025-09-18 16:13:51,507 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 16:14:07,764 - sistema_web_logger - INFO - Cliente 'Teste' (ID: 11) atualizado com sucesso.
+2025-09-18 16:14:07,769 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 16:14:49,426 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 16:15:07,522 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 16:40:51,331 - sistema_web_logger - INFO - Acessando a página inicial.
+2025-09-18 16:40:58,842 - sistema_web_logger - INFO - Página de listagem de produtos carregada com sucesso.
+2025-09-18 16:41:12,133 - sistema_web_logger - INFO - Página de balanço e movimentações financeiras carregada com sucesso.
+2025-09-18 16:41:20,656 - sistema_web_logger - INFO - Capital Social no valor de R$50000.00 foi registrado com sucesso.
+2025-09-18 16:41:20,662 - sistema_web_logger - INFO - Página de balanço e movimentações financeiras carregada com sucesso.
+2025-09-18 16:41:28,586 - sistema_web_logger - INFO - Página de listagem de bens patrimoniais carregada com sucesso.
+2025-09-18 16:41:32,165 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 16:41:40,154 - sistema_web_logger - INFO - Página de listagem de compras acessada com sucesso.
+2025-09-18 16:41:48,938 - sistema_web_logger - INFO - Compra ID 1 para o fornecedor ID 1 registrada com sucesso. Valor: R$4590.00
+2025-09-18 16:41:48,943 - sistema_web_logger - INFO - Página de listagem de compras acessada com sucesso.
+2025-09-18 16:41:52,024 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 16:42:00,254 - sistema_web_logger - INFO - Venda registrada com sucesso: 1
+2025-09-18 16:42:00,260 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 16:42:02,673 - sistema_web_logger - INFO - Página de listagem de produtos carregada com sucesso.
+2025-09-18 16:42:09,600 - sistema_web_logger - INFO - Produto 'Mouse Sem Fio Logitech' (ID: 2) atualizado com sucesso.
+2025-09-18 16:42:09,606 - sistema_web_logger - INFO - Página de listagem de produtos carregada com sucesso.
+2025-09-18 17:12:04,884 - sistema_web_logger - INFO - Acessando a página inicial.
+2025-09-18 17:12:07,098 - sistema_web_logger - INFO - Página de listagem de produtos carregada com sucesso.
+2025-09-18 17:12:12,941 - sistema_web_logger - INFO - Produto 'AAAAAAA' (ID: 11) cadastrado com sucesso.
+2025-09-18 17:12:12,945 - sistema_web_logger - INFO - Página de listagem de produtos carregada com sucesso.
+2025-09-18 17:12:16,162 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 17:12:21,339 - sistema_web_logger - INFO - Cliente 'Ana Santos' (ID: 4) atualizado com sucesso.
+2025-09-18 17:12:21,344 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 17:12:23,761 - sistema_web_logger - INFO - Página de listagem de fornecedores carregada com sucesso.
+2025-09-18 17:12:25,044 - sistema_web_logger - INFO - Página de listagem de compras acessada com sucesso.
+2025-09-18 17:12:34,385 - sistema_web_logger - INFO - Compra ID 2 para o fornecedor ID 1 registrada com sucesso. Valor: R$25000.00
+2025-09-18 17:12:34,389 - sistema_web_logger - INFO - Página de listagem de compras acessada com sucesso.
+2025-09-18 17:12:39,924 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 17:12:50,831 - sistema_web_logger - INFO - Venda registrada com sucesso: 2
+2025-09-18 17:12:50,838 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 17:12:53,544 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 17:12:54,625 - sistema_web_logger - INFO - Página de listagem de bens patrimoniais carregada com sucesso.
+2025-09-18 17:12:56,164 - sistema_web_logger - INFO - Página de balanço e movimentações financeiras carregada com sucesso.
+2025-09-18 17:13:06,352 - sistema_web_logger - ERROR - Erro ao tentar registrar Capital Social no valor de 19.98: Class 'routes.financeiro.CapitalSocial' is not mapped
+Traceback (most recent call last):
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\routes\financeiro.py", line 24, in capital_social
+    nova_movimentacao = MovimentacaoFactory.criar(capital_obj, 'capital_social')
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\services.py", line 68, in criar
+    return MovimentacaoFinanceira(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 4, in __init__
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 2178, in _declarative_constructor
+    setattr(self, k, kwargs[k])
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy\orm\attributes.py", line 537, in __set__
+    self.impl.set(
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy_utils\generic.py", line 93, in set
+    mapper = class_mapper(class_)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aliss\Documentos\Github\Sistema_web_Contabilidade\trab\venv\Lib\site-packages\sqlalchemy\orm\base.py", line 565, in class_mapper
+    raise exc.UnmappedClassError(class_)
+sqlalchemy.orm.exc.UnmappedClassError: Class 'routes.financeiro.CapitalSocial' is not mapped
+2025-09-18 18:57:16,364 - sistema_web_logger - INFO - Acessando a página inicial.
+2025-09-18 18:57:23,169 - sistema_web_logger - INFO - Página de listagem de produtos carregada com sucesso.
+2025-09-18 18:57:31,589 - sistema_web_logger - INFO - Carregou a lista de clientes com sucesso.
+2025-09-18 18:57:34,032 - sistema_web_logger - INFO - Página de listagem de fornecedores carregada com sucesso.
+2025-09-18 18:57:35,014 - sistema_web_logger - INFO - Página de listagem de compras acessada com sucesso.
+2025-09-18 18:57:37,511 - sistema_web_logger - INFO - Página de listagem de vendas carregada com sucesso.
+2025-09-18 18:57:38,591 - sistema_web_logger - INFO - Página de listagem de bens patrimoniais carregada com sucesso.
+2025-09-18 18:57:42,229 - sistema_web_logger - INFO - Página de balanço e movimentações financeiras carregada com sucesso.
+2025-09-18 19:25:40,892 - sistema_web_logger - INFO - Acessando a página inicial.
+2025-10-12 20:05:43,871 - sistema_web_logger - INFO - Acessando a página inicial.
