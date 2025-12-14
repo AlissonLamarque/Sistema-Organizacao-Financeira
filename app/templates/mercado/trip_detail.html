@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}Detalhes da Compra{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2 mb-0"><i class="bi bi-receipt"></i> Detalhes da Compra</h1>
+    <a href="{{ url_for('mercado.index') }}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Voltar
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <h5 class="card-title fw-bold text-primary">{{ compra.nome_mercado }}</h5>
+                <p class="text-muted mb-2">
+                    <i class="bi bi-calendar-event"></i> {{ compra.data.strftime('%d/%m/%Y') }}
+                </p>
+            </div>
+            <div class="text-end">
+                <h4 class="text-success fw-bold">
+                    R$ {{ "%.2f"|format(compra.total_calculado) }}
+                </h4>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Produto</th>
+                        <th class="text-center">Qtd</th>
+                        <th class="text-end">Preço Un.</th>
+                        <th class="text-end">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in compra.itens %}
+                    <tr>
+                        <td class="fw-medium">{{ item.produto.nome }}</td>
+                        <td class="text-center">{{ item.quantidade }}</td>
+                        <td class="text-end">R$ {{ "%.2f"|format(item.preco_unitario_pago) }}</td>
+                        <td class="text-end fw-bold">
+                            R$ {{ "%.2f"|format(item.total_item) }}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">Nenhum item encontrado nesta compra.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

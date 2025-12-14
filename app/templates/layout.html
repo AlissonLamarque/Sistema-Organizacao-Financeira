@@ -15,7 +15,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+            <a class="navbar-brand" href="{{ url_for('mercado.index') }}">
                 <i class="bi bi-cart4"></i>
                 Gestão de Compras
             </a>
@@ -25,13 +25,13 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.index') }}"><i class="bi bi-list-ul"></i> Minhas Compras</a>
+                        <a class="nav-link" href="{{ url_for('mercado.index') }}"><i class="bi bi-list-ul"></i> Minhas Compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.add_trip') }}"><i class="bi bi-plus-circle"></i> Adicionar Compra</a>
+                        <a class="nav-link" href="{{ url_for('mercado.add_trip') }}"><i class="bi bi-plus-circle"></i> Adicionar Compra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.add_product') }}"><i class="bi bi-box-seam"></i> Cadastrar Produtos</a>
+                        <a class="nav-link" href="{{ url_for('mercado.add_product') }}"><i class="bi bi-box-seam"></i> Cadastrar Produtos</a>
                     </li>
                 </ul>
             </div>

@@ -1,6 +1,5 @@
-from flask import Flask
-from models import db
-from routes.base import main_bp
+from flask import Flask, redirect, url_for
+from .extensions import db
 
 def create_app():
     app = Flask(__name__)
@@ -11,14 +10,11 @@ def create_app():
     
     db.init_app(app)
 
-    app.register_blueprint(main_bp)
+    from app.mercado.routes import mercado_bp
+    app.register_blueprint(mercado_bp)
+    
+    @app.route('/')
+    def root():
+        return redirect(url_for('mercado.index'))
     
     return app
-
-app = create_app()
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
-
