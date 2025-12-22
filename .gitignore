@@ -1,0 +1,9 @@
+# Ignorar cache do Python (compilados)
+__pycache__/
+*.pyc
+
+# Ignorar Ambiente Virtual
+venv/
+
+# Ignorar arquivos de teste/conteúdo sensível específicos
+nota_teste_*.html

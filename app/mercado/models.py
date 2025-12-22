@@ -2,6 +2,9 @@ from app.extensions import db
 from datetime import datetime
 
 class Produto(db.Model):
+    """
+    Entidade que representa o catálogo de produtos no sistema.
+    """
     __tablename__ = 'produtos'
     
     id = db.Column(db.Integer, primary_key=True)
@@ -11,6 +14,10 @@ class Produto(db.Model):
         return self.nome
 
 class IdaMercado(db.Model):
+    """
+    Entidade que representa a transação da nota fiscal.
+    Agrega múltiplos itens comprados em uma única ida ao mercado.
+    """
     __tablename__ = 'idas_mercado'
     
     id = db.Column(db.Integer, primary_key=True)
@@ -23,9 +30,16 @@ class IdaMercado(db.Model):
 
     @property
     def total_calculado(self):
+        """
+        Realiza a soma dinâmica dos itens associados.
+        """
         return sum(item.total_item for item in self.itens)
 
 class ItemComprado(db.Model):
+    """
+    Entidade associativa que conecta a transação de ida ao mercado ao catálogo de produtos.
+    Registra o sanpshot dos valores no momento da compra.
+    """
     __tablename__ = 'itens_comprados'
     
     id = db.Column(db.Integer, primary_key=True)
@@ -40,4 +54,7 @@ class ItemComprado(db.Model):
 
     @property
     def total_item(self):
+        """
+        Calcula o subtotal do item comprado.
+        """
         return self.quantidade * self.preco_unitario_pago
